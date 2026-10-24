@@ -1,0 +1,63 @@
+
+# Python 字节码
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 虚拟环境
+.venv/
+venv/
+env/
+ENV/
+
+# 环境变量及敏感配置
+.env
+.env.*
+!.env.example
+
+# Python 打包文件
+build/
+dist/
+*.egg-info/
+.eggs/
+wheels/
+pip-wheel-metadata/
+
+# 测试与覆盖率
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# 类型检查与代码检查缓存
+.mypy_cache/
+.pyright/
+.ruff_cache/
+.dmypy.json
+
+# 日志文件
+*.log
+logs/
+
+# IDE：PyCharm / IntelliJ IDEA
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Alembic 临时缓存
+alembic/__pycache__/
