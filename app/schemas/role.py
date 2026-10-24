@@ -1,4 +1,6 @@
-from pydantic import BaseModel, Field
+from pydantic import Field
+
+from app.schemas.common import ORMModel
 
 
 #
@@ -9,10 +11,10 @@ from pydantic import BaseModel, Field
 # @version: 1.0
 # @description: 定义角色名称、编码、数据权限范围及关联菜单和部门
 #
-class RoleInput(BaseModel):
+class RoleInput(ORMModel):
     name: str = Field(min_length=1, max_length=100)
     code: str = Field(min_length=1, max_length=100)
-    description: str = ""
+    description: str = Field(default="", max_length=255)
     data_scope: str = "self"
     menu_ids: list[int] = Field(default_factory=list)
     department_ids: list[int] = Field(default_factory=list)
@@ -26,8 +28,8 @@ class RoleInput(BaseModel):
 # @version: 1.0
 # @description: 定义角色名称、编码、数据权限范围及关联菜单和部门
 #
-class RoleOutput(BaseModel):
-    id: int | None = None
+class RoleOutput(ORMModel):
+    id: int
     name: str
     code: str
     description: str

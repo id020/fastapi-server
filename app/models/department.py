@@ -23,7 +23,7 @@ class Department(Base):
     __tablename__ = "sys_departments"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
-    name: Mapped[str] = mapped_column(String(100), nullable=False)
+    name: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
     parent_id: Mapped[int] = mapped_column(Integer, nullable=True, index=True)
     description: Mapped[str] = mapped_column(String(255), nullable=False, default="")
 

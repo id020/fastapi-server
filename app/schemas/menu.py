@@ -1,4 +1,6 @@
-from pydantic import BaseModel, Field
+from typing import Literal
+
+from pydantic import Field
 
 from app.schemas.common import ORMModel
 
@@ -11,14 +13,14 @@ from app.schemas.common import ORMModel
 # @version: 1.0
 # @description: 定义菜单名称、权限标识、菜单类型、路由及层级关系
 #
-class MenuInput(BaseModel):
+class MenuInput(ORMModel):
     name: str = Field(min_length=1, max_length=100)
     permission: str = Field(min_length=1, max_length=160)
-    menu_type: str = "menu"
-    path: str = ""
-    component: str = ""
+    menu_type: Literal["menu", "button"] = "menu"
+    path: str = Field(default="", max_length=160)
+    component: str = Field(default="", max_length=100)
     parent_id: int | None = None
-    sort_order: int = 0
+    sort_order: int = Field(default=0, ge=0)
 
 
 #
@@ -40,3 +42,7 @@ class MenuSummary(ORMModel):
     component: str
     parent_id: int | None
     sort_order: int
+
+
+class MenuOutput(MenuSummary):
+    pass

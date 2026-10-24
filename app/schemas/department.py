@@ -1,4 +1,6 @@
-from pydantic import BaseModel, Field
+from pydantic import Field
+
+from app.schemas.common import ORMModel
 
 
 #
@@ -9,10 +11,10 @@ from pydantic import BaseModel, Field
 # @version: 1.0
 # @description: 定义部门名称、上级部门及部门描述等字段
 #
-class DepartmentInput(BaseModel):
+class DepartmentInput(ORMModel):
     name: str = Field(min_length=1, max_length=100)
     parent_id: int | None = None
-    description: str = ""
+    description: str = Field(default="", max_length=255)
 
 
 #
@@ -23,7 +25,7 @@ class DepartmentInput(BaseModel):
 # @version: 1.0
 # @description: 定义部门 ID、部门名称、上级部门 ID 及部门描述等字段
 #
-class DepartmentOutput(BaseModel):
+class DepartmentOutput(ORMModel):
     id: int
     name: str
     # 上级部门 ID，顶级部门为 None。
